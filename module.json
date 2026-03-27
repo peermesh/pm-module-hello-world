@@ -4,7 +4,7 @@
   "id": "hello-module",
   "version": "1.0.0",
   "name": "Hello Module",
-  "description": "A complete, working example module for the PeerMesh Docker Lab module system. Serves a static greeting page via nginx, demonstrating manifest, lifecycle hooks, Traefik routing, health checks, and dashboard integration.",
+  "description": "A complete, working example module for the PeerMesh Core module system. Serves a static greeting page via nginx, demonstrating manifest, lifecycle hooks, Traefik routing, health checks, and dashboard integration.",
 
   "author": {
     "name": "PeerMesh Team"
@@ -104,7 +104,7 @@
       },
       "domain": {
         "type": "string",
-        "description": "The domain where Docker Lab is hosted",
+        "description": "The domain where Core is hosted",
         "env": "DOMAIN"
       },
       "subdomain": {

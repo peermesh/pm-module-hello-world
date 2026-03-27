@@ -1,21 +1,21 @@
 # Hello Module
 
-> A complete, working example module for the PeerMesh Docker Lab module system. Clone it, customize it, deploy it.
+> A complete, working example module for the PeerMesh Core module system. Clone it, customize it, deploy it.
 
 ## What Is This?
 
-The Hello Module is a reference implementation that demonstrates every integration point in the Docker Lab module system. It serves a static "Hello from PeerMesh" greeting page via nginx, but the real value is in the structure: the annotated manifest, the lifecycle hooks, the Traefik routing, the health checks, and the dashboard widget.
+The Hello Module is a reference implementation that demonstrates every integration point in the Core module system. It serves a static "Hello from PeerMesh" greeting page via nginx, but the real value is in the structure: the annotated manifest, the lifecycle hooks, the Traefik routing, the health checks, and the dashboard widget.
 
-Use this repository as a starting point when building your own Docker Lab modules. Copy the files, replace the placeholders (marked with `# CUSTOMIZE:` comments), and you have a working module.
+Use this repository as a starting point when building your own Core modules. Copy the files, replace the placeholders (marked with `# CUSTOMIZE:` comments), and you have a working module.
 
-**This module is expected to evolve rapidly** as the Docker Lab module system matures. Check the [CHANGELOG](CHANGELOG.md) for version history and the compatibility table below for supported Docker Lab versions.
+**This module is expected to evolve rapidly** as the Core module system matures. Check the [CHANGELOG](CHANGELOG.md) for version history and the compatibility table below for supported Core versions.
 
 ## Quick Start
 
-Five commands to get the Hello Module running in your Docker Lab:
+Five commands to get the Hello Module running in your Core:
 
 ```bash
-# 1. Clone into your Docker Lab modules directory
+# 1. Clone into your Core modules directory
 cd /path/to/docker-lab/modules
 git clone https://github.com/peermesh/hello-module.git hello-module
 
@@ -37,7 +37,7 @@ docker compose up -d
 
 ### Important: Directory Placement
 
-This module **must** be placed at `modules/hello-module/` inside your Docker Lab installation. The `module.json` `$schema` path and the `docker-compose.yml` `extends.file` path are both relative to this location:
+This module **must** be placed at `modules/hello-module/` inside your Core installation. The `module.json` `$schema` path and the `docker-compose.yml` `extends.file` path are both relative to this location:
 
 - `$schema` resolves to `../../foundation/schemas/module.schema.json`
 - `extends.file` resolves to `../../foundation/docker-compose.base.yml`
@@ -46,9 +46,9 @@ If you place the module elsewhere, these paths will break and compose will fail 
 
 ### Prerequisites
 
-- Docker Lab foundation stack running (Traefik, socket-proxy)
+- Core foundation stack running (Traefik, socket-proxy)
 - Docker Engine 24+ with Compose V2 plugin
-- A domain with DNS pointing to your Docker Lab host
+- A domain with DNS pointing to your Core host
 
 ## File Structure
 
@@ -104,7 +104,7 @@ Every value you should change when creating your own module is marked with a `# 
 
 ## How Modules Work
 
-A Docker Lab module integrates with the foundation through four mechanisms:
+A Core module integrates with the foundation through four mechanisms:
 
 ### 1. Module Manifest (`module.json`)
 
@@ -158,7 +158,7 @@ Five hook scripts manage the module lifecycle:
 | `uninstall.sh` | Clean up resources | Module removal |
 | `health.sh` | Report health as JSON or text | Periodic checks |
 
-**Important**: Lifecycle hooks are not auto-invoked by `launch_peermesh.sh module enable`. Currently, `module enable` only runs `docker compose up -d`. Run hooks manually, or use them as documentation for future CLI integration.
+**Important**: Lifecycle hooks are not auto-invoked by `launch_docker_lab_core.sh module enable`. Currently, `module enable` only runs `docker compose up -d`. Run hooks manually, or use them as documentation for future CLI integration.
 
 ## How to Add a Database
 
@@ -312,7 +312,7 @@ docker exec traefik wget -qO- http://localhost:8080/api/http/routers 2>/dev/null
 
 **Common causes**:
 - `DOMAIN` not set in `.env`
-- DNS not pointing to the Docker Lab host
+- DNS not pointing to the Core host
 - Container not on `proxy-external` network
 - Traefik labels have a typo
 
@@ -347,11 +347,11 @@ docker exec hello-module wget -qO- http://127.0.0.1/
 
 ## Version Compatibility
 
-| Hello Module | Docker Lab | Foundation | Notes |
+| Hello Module | Core | Foundation | Notes |
 |--------------|------------|------------|-------|
 | 1.0.0 | v7.39.0+ | 1.0.0+ | Initial release |
 
-This module uses the `_service-lite` base pattern and the `module.json` schema from Docker Lab foundation. If the schema changes in a future Docker Lab version, a new major version of this module will be released.
+This module uses the `_service-lite` base pattern and the `module.json` schema from Core foundation. If the schema changes in a future Core version, a new major version of this module will be released.
 
 ## Contributing
 
