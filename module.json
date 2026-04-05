@@ -9,7 +9,7 @@
   "author": {
     "name": "PeerMesh Team"
   },
-  "license": "MIT",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "repository": "https://github.com/peermesh/hello-module",
   "tags": ["example", "hello-world", "nginx", "tutorial", "starter"],
 

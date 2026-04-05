@@ -16,7 +16,7 @@ Five commands to get the Hello Module running in your Core:
 
 ```bash
 # 1. Clone into your Core modules directory
-cd /path/to/docker-lab/modules
+cd /path/to/core/modules
 git clone https://github.com/peermesh/hello-module.git hello-module
 
 # 2. Configure
@@ -158,7 +158,7 @@ Five hook scripts manage the module lifecycle:
 | `uninstall.sh` | Clean up resources | Module removal |
 | `health.sh` | Report health as JSON or text | Periodic checks |
 
-**Important**: Lifecycle hooks are not auto-invoked by `launch_docker_lab_core.sh module enable`. Currently, `module enable` only runs `docker compose up -d`. Run hooks manually, or use them as documentation for future CLI integration.
+**Important**: Lifecycle hooks are not auto-invoked by `launch_core.sh module enable`. Currently, `module enable` only runs `docker compose up -d`. Run hooks manually, or use them as documentation for future CLI integration.
 
 ## How to Add a Database
 
